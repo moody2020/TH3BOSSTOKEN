@@ -1478,7 +1478,7 @@ local mutes = data[tostring(target)]["mutes"]
  .."\n🗯┇ قفل الصور : "..mutes.mute_photo
  .."\n🗯┇ قفل الفيديو : "..mutes.mute_video
  .."\n🗯┇ قفل البصمات : "..mutes.mute_audio
- .."\n\n🗯┇ قفل الصوت : "..mutes.mute_voice
+ .."\n🗯┇ قفل الصوت : "..mutes.mute_voice
  .."\n🗯┇ قفل الملصقات : "..mutes.mute_sticker
  .."\n🗯┇ قفل الجهات : "..mutes.mute_contact
  .."\n🗯┇ قفل التوجيه : "..mutes.mute_forward
@@ -1492,21 +1492,21 @@ local mutes = data[tostring(target)]["mutes"]
  .."\n🗯┇ قفل الروابط : "..settings.lock_link
  .."\n🗯┇ قفل الاضافه : "..settings.lock_join
  .."\n🗯┇ قفل التاك : "..settings.lock_tag
- .."\n🗯┇ قفل الكلايش : "..settings.lock_spam
+ .."\n🗯┇ قفل التكرار : "..settings.flood
+-- .."\n🗯┇ قفل الكلايش : "..settings.lock_spam
 -- .."\n🗯┇ قفل الويب : "..settings.lock_webpage
- .."\n🗯┇ قفل الماركدون : "..settings.lock_markdown
+-- .."\n🗯┇ قفل الماركدوان : "..settings.lock_markdown
  .."\n🗯┇ قفل التثبيت : "..settings.lock_pin
- .."\n🗯┇ قفل الايدي : "..settings.lock_id
  .."\n🗯┇ قفل البوتات : "..settings.lock_bots
- .."\n🗯┇ قفل  البوتات بالطرد : "..settings.lock_bots_inkick
-  .."\n🗯┇ قفل التكرار : "..settings.flood
  .."\n🗯┇ عدد التكرار : "..NUM_MSG_MAX
 .."\n\n🗯┇` اعدادات اخرى : `"
 .."\n🗯┇ تشغيل الترحيب : "..settings.welcome
 .."\n🗯┇ تشغيل الردود : "..settings.replay
+.."\n🗯┇ تشغيل الايدي : "..settings.lock_id
 .."\n🗯┇ تشغيل التحذير : "..settings.lock_woring
-.." \n\n🗯┇ الاشتراك :` "..expire_date.."`"
-..'\n\n🗯┇ مـطـور الـبـوت : '..sudouser..'\n'
+
+ .." \n\n🗯┇  الاشتراك :` "..expire_date
+.."`"
 
 
 
