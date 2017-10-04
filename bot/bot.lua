@@ -1,8 +1,9 @@
-
+]
 package.path = package.path..';.luarocks/share/lua/5.2/?.lua;.luarocks/share/lua/5.2/?/init.lua'
 package.cpath = package.cpath..';.luarocks/lib/lua/5.2/?.so'
 require('./bot/utils')
 require('./bot/methods')
+
 http = require('socket.http')
 JSON = (loadfile "./libs/dkjson.lua")()
 https = require('ssl.https')
@@ -14,7 +15,7 @@ json = (loadfile "./libs/JSON.lua")()
 JSON = (loadfile "./libs/dkjson.lua")()
 serpent = (loadfile "./libs/serpent.lua")()
 if notredis then
-print('\27[31m🗯┇ مرحبا عزيزي \n🗯┇ { redis-server } السورس يحتاج الى ريدز  \n🗯┇ redis-server  لحل هذا المشكله افتح ترمنال جديد واكتب   \n🗯┇ TH3BOSS.sh وبعدها ارجع سوي رن لملف الـ  \n🗯┇ للاستفسار راسلني @TH3BOSS\27[39m')
+print('\27[31m🗯┇ مرحبا عزيزي \n🗯┇ redis السورس يحتاج الى ريدز  \n🗯┇ redis-server  لحل هذا المشكله افتح ترمنال جديد واكتب   \n🗯┇ launch.sh وبعدها ارجع سوي رن لملف الـ  \n🗯┇ تحياتي عمر السراي ...  👋🏿\27[39m')
 return
 end
 
@@ -22,21 +23,29 @@ end
 -- Create a basic config.json file and saves it.
 function save_config( )
   serialize_to_file(_config, './data/config.lua')
-  print ('./data/config.lua 🗯┇ تم حفظ البيانات في الـ')
+  print ('./data/config.lua تم حفظ البيانات في الـ')
 end
 
 function create_config( )
-	io.write('\n\27[1;33m 🗯┇ ادخل ايدي حسابك لتصبح مطور : \27[0;39;49m\n')
+	io.write('\n\27[1;33mادخل ايدي حسابك لتصبح مطور 🗯┇ \27[0;39;49m\n')
 	local SUDO = tonumber(io.read())
 if not tostring(SUDO):match('%d+') then
     SUDO = 60809019
   end
-  	io.write('\n\27[1;33m 🗯┇  ارسل توكن البوت الان : \27[0;39;49m\n')
+  	io.write('\n\27[1;33mارسل توكن البوت الان 🗯┇ \27[0;39;49m\n')
 	local token = io.read()
-	 	io.write('\n\27[1;33m    🗯┇ ادخل الان اسم البوت الذي تريده : \27[0;39;49m\n')
+	 	io.write('\n\27[1;33mادخل الان اسم البوت الذي تريده 🗯┇ \27[0;39;49m\n')
 	local botname = io.read()
-	 	io.write('\n\27[1;33m 🗯┇ ادخل معرف المطور : \27[0;39;49m\n')
+	if botname =="" then
+  botname = "الزعيم"
+end
+	 	io.write('\n\27[1;33mادخل معرف المطور 🗯┇ \27[0;39;49m\n')
 	local sudouser = io.read()
+	if sudouser =="" then
+  sudouser = "@TH3BOSS"
+end
+
+
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
@@ -51,10 +60,10 @@ if not tostring(SUDO):match('%d+') then
     sudo_users = {60809019, SUDO},--Sudo users
     master_id = SUDO, 
     token_bot = token, 
-    botname = (botname or "الزعيم"), 
-    sudouser = (sudouser or "@TH3BOSS"), 
+    botname = botname, 
+    sudouser = sudouser, 
     moderation = {data = './data/moderation.json'},
-   info_text = [[ 🗯┇ ᗯEᒪᑕOᗰE ᗰY ᗪEᗩᖇ
+    info_text = [[ 🗯┇ ᗯEᒪᑕOᗰE ᗰY ᗪEᗩᖇ
 
 🗯┇ https://github.com/moody2020/TH3BOSS
  
@@ -62,12 +71,12 @@ if not tostring(SUDO):match('%d+') then
 
 🗯┇ ᗪEᐯEᒪOᑭEᖇ
 
-🗯┇ ᗪEᐯ ]]..sudouser..[[ 
+🗯┇ ᗪEᐯ ]]..sudouser..[[
 ]],
   }
   serialize_to_file(config, './data/config.lua')
-  download_to_file('http://alsaray99.esy.es/getuser.lua','getuser.lua')
-  print('🗯┇ تم حفظ البيانات في الـكونفك سوف يتم تشغيل البوت')
+download_to_file('http://alsaray99.esy.es/getuser.lua','getuser.lua')
+  print('💬 تم ضبط الاعدادات سوف يتم تشغيل السورس ☑️')
 end
 
 
@@ -80,7 +89,7 @@ function load_config( )
   else
     f:close()
   end
-  local config = loadfile ("./data/config.lua")()
+       local config = loadfile ("./data/config.lua")()
   for v,user in pairs(config.sudo_users) do
     print("🗯┇ ايدي المطور: " .. user)
   end
@@ -90,15 +99,17 @@ _config = load_config( )
 
 
 
- if _config then
-token_botx = _config.token_bot
-sudo_id = _config.master_id
-elseif _config and not _config.token_botx then
-print("🗯┇ لم تقم بوضع التوكن يجب عليك وضع التوكن في ملف البوت ليعمل السورس")
+
+if _config and _config.token_bot=="" then
+print("🗯┇ لم تقم بوضع التوكن يجب عليك وضع التوكن في ملف البوت ليعمل السورس\n🗯┇ سوي رن لملف الانش وادخل المعلومات للسورس")
+os.execute(' rm -fr data/config.lua')
 return
 else
-token_botx = "توكن"
-master_idx = 60809019
+token_botx = _config.token_bot
+sudo_id = _config.master_id
+botname = _config.botname
+sudouser = _config.sudouser
+require('./data/getuser')
 end
 
 
@@ -115,7 +126,7 @@ function bot_run()
 	bot = bot.result
 	local runlog = "🗯┇ معرف بوتك : @"..bot.username.."\n	🗯┇ يعمل ع سورس الزعيم توكن الاصدار V20\n🗯┇ تابع قناه السورس @lBOSSl"
 	print(runlog.."\n┇-----------------------------------")
---	send_msg(sudo_id, runlog)
+	send_msg(sudo_id, runlog)
 	last_update = last_update or 0
 	last_cron = last_cron or os.time()
 	startbot = true
@@ -157,7 +168,7 @@ function save_data(filename, data)
 end
 
 function msg_valid(msg)
-local msg_time = os.time() - 4
+local msg_time = os.time() - 20
   if msg.date < tonumber(msg_time) then
     print('\27[36m》》رسائل سابقه《《\27[39m')
     return false
@@ -195,14 +206,14 @@ if plugin.pre_process then
         --If plugin is for privileged users only
 		local result = plugin.pre_process(msg)
 		if result then
-			print("🗯┇ الملف :", plugin_name)
+			print("┇-> الملف :", plugin_name)
 		end
 	end
   for k, pattern in pairs(plugin.patterns) do
     local matches = match_pattern(pattern, msg.text or msg.caption or msg.query)
     if matches then
 
-      print("🗯┇ الملف :"..plugin_name.." |"..pattern)
+      print("┇-> الملف :"..plugin_name.." |"..pattern)
       -- Function exists
       if plugin.run then
         -- If plugin is for privileged users only
@@ -242,7 +253,7 @@ end
 -- Enable plugins in config.json
 function load_plugins()
   for k, v in pairs(_config.enabled_plugins) do
-    print("🗯┇ الملف شـغـال : ", v)
+    print("┇-> الملف شـغـال : ", v)
 
     local ok, err =  pcall(function()
       local t = loadfile("plugins/"..v..'.lua')()
@@ -285,7 +296,7 @@ handle_inline_keyboards_cb(v.callback_query)
 		print("🗯┇ خطا في الاتصال بالتوكن\n🗯┇ او التوكن الذي ادخلته مفعل بالويب هوك\n🗯┇ او التوكن شغال ع سورس اخر\n🗯┇ يرجى مسح الويب هوك بالتوكن او فصل التوكن عن السورس اذا جنت رابطه او عمل توكن جديد")
 		return
 	end
-	if last_cron < os.time() - 4 then
+	if last_cron < os.time() - 20 then
   for name, plugin in pairs(plugins) do
 		if plugin.cron then
 			local res, err = pcall(
