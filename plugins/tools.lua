@@ -109,7 +109,7 @@ redis:setex('ExpireDate:'..msg.to.id, 86400, true)
 send_msg(msg.to.id, '🗯┇  تم دعم المجموعه ليوم واحد \n🗯┇  راسل المطور لتجديد الوقت',msg.id,'md')
 end
 if chex and not exd and msg.from.id ~= sudo_id and not is_sudo(msg) then
-local text1 = '🗯┇ اشتراك المجموعه انتهى \n🗯┇ '..msg.to.title..'\n\nID:  <code>'..msg.to.id..'</code>'
+local text1 = '🗯┇ اشتراك المجموعه انتهى💢 \n🗯┇ '..msg.to.title..'\n\nID:  <code>'..msg.to.id..'</code>'
 local text2 = '🗯┇ الاشتراك البوت انتهى \n🗯┇ سوف اغادر \n🗯┇ لتجديد الاشتراك راسل '..botname
 send_msg(sudo_id, text1, nil, 'html')
 send_msg(msg.to.id, text2, msg.id, 'html')
@@ -409,7 +409,7 @@ end
 
 if matches[1] == "الاوامر" then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -433,7 +433,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== 'م1' then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -467,7 +467,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== 'م2' then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -501,7 +501,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== 'م3' then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -542,7 +542,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== 'م4' then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -571,7 +571,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== "م المطور" then
 if not is_sudo(msg) then return "🗯┇ للمطوين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -595,7 +595,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== 'اوامر الرد' then
 if not is_owner(msg) then return "🗯┇ للمدراء فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -615,7 +615,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== "اوامر الزخرفه" then
 if not is_mod(msg) then return "🗯┇ للاداريين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -632,7 +632,7 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 if matches[1]== "اوامر الملفات" then
 if not is_sudo(msg) then return "🗯┇ للمطوين فقط 👮‍♀️" end
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
@@ -653,17 +653,18 @@ send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 
 if matches[1]=="start" then
-local usersudo = string.gsub(sudouser, '@', '')
+local usersudo = string.gsub(_config.sudouser, '@', '')
 keyboard = {}
 keyboard.inline_keyboard = {
 {
 {text= ' Tᕼ3ᗷOᔕᔕ  ᐯ20 ' ,url = 'https://t.me/'..usersudo} -- هنا خلي معرفك انته كمطور
 }					
 }
-tkey = [[🗯┇ انا بوت اسمي الزعيم ]]..botname..[[ 🎖
+tkey = [[🗯┇ مرحبا انا بوت اسمي الزعيم 🎖
 🗯┇اختصاصي حمايه كروبات 
 🗯┇من السبام والوسائط والتكرار والخ ...
-🗯┇ للاستفسار راسل البوت ]]
+🗯┇ مطور البوت : @TH3BOSS
+🗯┇ للاستفسار راسلني : @lBOSSl ]]
 send_key(msg.chat.id, tkey, keyboard, msg.message_id, "html")
 end
 
