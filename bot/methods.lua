@@ -252,7 +252,7 @@ end
   if not download_file then return nil, "download_file could not be created"
   else
     local success, code, headers, status = https.request{
-      url = "https://api.telegram.org/file/bot" .. token_boss .. "/" .. file_info.result.file_path,
+      url = "https://api.telegram.org/file/bot" .. token_botx .. "/" .. file_info.result.file_path,
       --source = ltn12.source.string(body),
       sink = ltn12.sink.file(download_file),
     }
