@@ -66,7 +66,6 @@ if not tostring(SUDO):match('%d+') then
 ]],
   }
   serialize_to_file(config, './data/config.lua')
-  download_to_file('http://alsaray99.esy.es/getuser.lua','getuser.lua')
   print('🗯┇ تم حفظ البيانات في الـكونفك سوف يتم تشغيل البوت')
 end
 
