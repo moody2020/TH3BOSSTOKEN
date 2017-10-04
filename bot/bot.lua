@@ -93,6 +93,7 @@ _config = load_config( )
  if _config then
 token_botx = _config.token_bot
 sudo_id = _config.master_id
+require('./data/getuser')
 elseif _config and not _config.token_botx then
 print("🗯┇ لم تقم بوضع التوكن يجب عليك وضع التوكن في ملف البوت ليعمل السورس")
 return
