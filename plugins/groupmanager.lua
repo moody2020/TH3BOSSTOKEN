@@ -32,7 +32,7 @@ whitelist ={},
 settings = {
 set_name = msg.to.title,
 lock_link = 'yes',
-lock_tag = 'no',
+lock_tag = 'yes',
 lock_spam = 'yes',
 lock_edit = 'no',
 lock_webpage = 'yes',
@@ -56,7 +56,7 @@ mute_contact = 'yes',
 mute_text = 'no',
 mute_photo = 'no',
 mute_gif = 'no',
-mute_location = 'no',
+mute_location = 'yes',
 mute_document = 'yes',
 mute_sticker = 'no',
 mute_voice = 'no',
@@ -1472,9 +1472,8 @@ local mutes = data[tostring(target)]["mutes"]
 
  text = "🗯┇` اعدادات الوسائط :`"
  .."\n🗯┇ قفل المتحركه : "..mutes.mute_gif
- --.."\n🗯┇ قفل الدردشه : "..mutes.mute_text
+ .."\n🗯┇ قفل الدردشه : "..mutes.mute_text
  .."\n🗯┇ قفل الانلاين : "..mutes.mute_inline
- --.."\n🗯┇ قفل الالعاب : "..mutes.mute_game
  .."\n🗯┇ قفل الصور : "..mutes.mute_photo
  .."\n🗯┇ قفل الفيديو : "..mutes.mute_video
  .."\n🗯┇ قفل البصمات : "..mutes.mute_audio
@@ -1482,22 +1481,20 @@ local mutes = data[tostring(target)]["mutes"]
  .."\n🗯┇ قفل الملصقات : "..mutes.mute_sticker
  .."\n🗯┇ قفل الجهات : "..mutes.mute_contact
  .."\n🗯┇ قفل التوجيه : "..mutes.mute_forward
--- .."\n🗯┇ قفل الموقع : "..mutes.mute_location
--- .."\n🗯┇ قفل الملفات : "..mutes.mute_document
+.."\n🗯┇ قفل الموقع : "..mutes.mute_location
+ .."\n🗯┇ قفل الملفات : "..mutes.mute_document
  .."\n🗯┇ قفل الاشعارات : "..mutes.mute_tgservice
--- .."\n🗯┇ قفل الكيبورد : "..mutes.mute_keyboard
-
 .."\n\n🗯┇` اعدادات المجموعه :` "
  .."\n🗯┇ قفل التعديل : "..settings.lock_edit
  .."\n🗯┇ قفل الروابط : "..settings.lock_link
  .."\n🗯┇ قفل الاضافه : "..settings.lock_join
  .."\n🗯┇ قفل التاك : "..settings.lock_tag
  .."\n🗯┇ قفل التكرار : "..settings.flood
--- .."\n🗯┇ قفل الكلايش : "..settings.lock_spam
--- .."\n🗯┇ قفل الويب : "..settings.lock_webpage
--- .."\n🗯┇ قفل الماركدوان : "..settings.lock_markdown
+.."\n🗯┇ قفل الكلايش : "..settings.lock_spam .."\n🗯┇ قفل الويب : "..settings.lock_webpage
+ .."\n🗯┇ قفل الماركدوان : "..settings.lock_markdown
  .."\n🗯┇ قفل التثبيت : "..settings.lock_pin
  .."\n🗯┇ قفل البوتات : "..settings.lock_bots
+ .."\n 🗯┇ قفل  البوتات بالطرد : "..settings.lock_bots_inkick
  .."\n🗯┇ عدد التكرار : "..NUM_MSG_MAX
 .."\n\n🗯┇` اعدادات اخرى : `"
 .."\n🗯┇ تشغيل الترحيب : "..settings.welcome
