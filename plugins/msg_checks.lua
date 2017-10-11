@@ -16,7 +16,7 @@ end
 if is_channel or is_chat then
 if msg.text and msg.text:match("(.*)") then
 if not data[tostring(chat)] and redis:get(auto_leave) and not is_sudo(msg) then
-send_msg(chat, "🔲┇  سـوف اغـادر _ الـمـجـمـوعـه لـيـسـت فـي قـائـمـه _ *مـجـمـوعـاتـي* ", nil, "md")
+send_msg(chat, "🗯 ┇  سـوف اغـادر _ الـمـجـمـوعـه لـيـسـت فـي قـائـمـه _ *مـجـمـوعـاتـي* ", nil, "md")
 leave_group(chat)
 end
 end
@@ -129,7 +129,7 @@ send_msg(chat, '<b>🗯 ┇ العضو :</b> <code>'..msg.from.first_name..'\n</
 end
 elseif msg.text then
 local link_msg_web = msg.text:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.text:match("[Hh][Tt][Tt][Pp]://") or msg.text:match("[Ww][Ww][Ww].") or msg.text:match(".[Cc][Oo][Mm]") 
-local link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]") or msg.text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
+local link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]") or msg.text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]/") or msg.text:match(".[Pp][Ee]/")
 if mutes.mute_text == "yes" then
  del_msg(chat, tonumber(msg.id))
 elseif string.len(msg.text) > 850 and settings.lock_spam == "yes" then
