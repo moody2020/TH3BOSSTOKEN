@@ -88,7 +88,10 @@ function load_config( )
 end
 _config = load_config( )
 
-
+function load_getuser( )
+loadfile('data/getuser.lua')()
+print('تم تحديث الاتصال ☑️')
+end
 
  if _config then
 token_botx = _config.token_bot
@@ -116,7 +119,7 @@ function bot_run()
 	bot = bot.result
 	local runlog = "🗯┇ معرف بوتك : @"..bot.username.."\n	🗯┇ يعمل ع سورس الزعيم توكن الاصدار V20\n🗯┇ تابع قناه السورس @lBOSSl"
 	print(runlog.."\n┇-----------------------------------")
---	send_msg(sudo_id, runlog)
+	send_msg(sudo_id, runlog)
 	last_update = last_update or 0
 	last_cron = last_cron or os.time()
 	startbot = true
