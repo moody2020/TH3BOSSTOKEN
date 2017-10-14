@@ -362,7 +362,7 @@ end
 end
 ---------------Help Tools----------------
   
-if matches[1] == '' and data[tostring(msg.to.id)]  then
+if matches[1] == 'السورس' and data[tostring(msg.to.id)]  then
 send_msg(msg.to.id, _config.info_text, msg.id)
 end
 if matches[1] == "المطورين" and data[tostring(msg.to.id)] and is_sudo(msg) then
@@ -781,6 +781,7 @@ return {
     "^(المطور)$",
     "^(رتبتي)$",
     "^(الرتبه)$",
+    "^(السورس)$",
     },
   run = run,
   pre_process = pre_process
