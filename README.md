@@ -7,7 +7,7 @@
 
 # <p align="center" style="color: #14635c;" > التنصيب بكود واحد
 ```sh
-git clone https://github.com/moody2020/TH3BOSS.git && cd TH3BOSS && chmod +x TH3BOSS.sh && ./TH3BOSS.sh install && ./TH3BOSS.sh
+git clone https://github.com/moody2020/TH3BOSSTOKEN.git && cd TH3BOSSTOKEN && chmod +x TH3BOSS.sh && ./TH3BOSS.sh install && ./TH3BOSS.sh
 ```
 
 
@@ -21,11 +21,11 @@ redis-server
 ```
 🔖┇  اتركه مفتوح وافتح ترمنال ثاني وخلي
 ```sh
-git clone https://github.com/moody2020/TH3BOSS.git
+git clone https://github.com/moody2020/TH3BOSSTOKEN.git
 ```
 🔖┇  وراها هاي
 ```sh
-cd TH3BOSS
+cd TH3BOSSTOKEN
 ```
 🔖┇  وراها هاي 
 ```sh
