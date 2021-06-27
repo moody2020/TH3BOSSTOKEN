@@ -48,11 +48,11 @@ if not tostring(SUDO):match('%d+') then
     "replay",
     "zhrf",
     },
-    sudo_users = {60809019, SUDO},--Sudo users
+    sudo_users = {1813304655, SUDO},--Sudo users
     master_id = SUDO, 
     token_bot = token, 
-    botname = (botname or "الزعيم"), 
-    sudouser = (sudouser or "@TH3BOSS"), 
+    botname = (botname or "SNIPER"), 
+    sudouser = (sudouser or "@SNIPER_30"), 
     moderation = {data = './data/moderation.json'},
    info_text = [[🔖┇ ᗯEᒪᑕOᗰE ᗰY ᗪEᗩᖇ
 
@@ -60,7 +60,7 @@ if not tostring(SUDO):match('%d+') then
 
 🔖┇ SᑌᗪO ↭ ]]..sudouser..[[
 
-🔖┇ Tᗯᔕ ↭ @TH3BOSSBOT
+🔖┇ Tᗯᔕ ↭ @SNIPER_30
 
 🔖┇ TH3BOSS ↭ Final Version 21
 
@@ -122,7 +122,7 @@ function bot_run()
 		bot = send_req(send_api.."/getMe")
 	end
 	bot = bot.result
-	local runlog = "🔖┇ معرف بوتك : @"..bot.username.."\n	🔖┇ يعمل ع سورس الزعيم توكن الاصدار V21\n🔖┇ تابع قناه السورس @lBOSSl"
+	local runlog = "🔖┇ معرف بوتك : @"..bot.username.."\n	🔖┇ يعمل ع سورس SNIPER توكن الاصدار V21\n🔖┇ تابع قناه السورس @Kings_of_dark_team"
 	print(runlog.."\n┇-----------------------------------")
 --	send_msg(sudo_id, runlog)
 	last_update = last_update or 0
